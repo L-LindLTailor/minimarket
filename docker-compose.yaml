@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./dumps:/dumps
+    entrypoint: >
+      sh -c "docker-entrypoint.sh postgres & 
+      sleep 10; 
+      pg_dump -U your_username your_database > /dumps/dump.sql; 
+      wait"
+
+volumes:
+  pgdata:
