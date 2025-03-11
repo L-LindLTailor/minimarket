@@ -1,0 +1,9 @@
+.idea
+.vscode
+./idea
+./vscode
+/target
+/Cargo.lock
+/.cargo/registry
+/.cargo/git
+./idea/minimarket.iml
